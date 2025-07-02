@@ -1,0 +1,52 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Number Tracer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 50%;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Mobile Number Tracer</h2>
+        <input type="text" id="mobileNumber" placeholder="Enter mobile number">
+        <button onclick="traceMobileNumber()">Trace</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function traceMobileNumber() {
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const apiKey = 'YOUR_API_KEY'; // Replace with your API key
+            const apiUrl = `https:                                                           
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const resultDiv = document.getElementById('result');
+                    resultDiv.innerHTML = `
+                        <p>Mobile Number: ${data.mobileNumber}</p>
+                        <p>Owner Name: ${data.ownerName}</p>
+                        <p>Location: ${data.location}</p>
+                    `;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('result').innerHTML = 'Error tracing mobile number';
+                });
+        }
+    </script>
+</body>
+</html>
